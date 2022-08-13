@@ -138,9 +138,6 @@
 		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/main.cpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/main.h">
-			<Option target="AdvancedProgramming_ass2"/>
-		</Unit>
 		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

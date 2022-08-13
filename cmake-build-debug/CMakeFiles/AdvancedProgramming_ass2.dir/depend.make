@@ -41,6 +41,7 @@ CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/Point.cpp.o: \
  ../src/KNN/Point.hpp
 CMakeFiles/AdvancedProgramming_ass2.dir/src/main.cpp.o: \
  ../src/KNN/DistanceCalcs/DistanceCalculator.hpp \
+ ../src/KNN/DistanceCalcs/EuclideanDistance.hpp \
  ../src/KNN/Flowers/Flower.hpp \
  ../src/KNN/KNNClassifier.hpp \
  ../src/KNN/KNNFileClassifier.hpp \

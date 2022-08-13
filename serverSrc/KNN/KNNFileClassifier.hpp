@@ -6,7 +6,9 @@
 #include "Flowers/Flower.hpp"
 #include "DistanceCalcs/DistanceCalculator.hpp"
 #include "KNNClassifier.hpp"
-
+/**
+ * This class classifies a file of unclassified points and saves the output file in the given path.
+ */
 class KNNFileClassifier {
 public:
 

@@ -3,24 +3,24 @@ project(AdvancedProgramming_ass2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(src/KNN)
-include_directories(src/KNN/DistanceCalcs)
-include_directories(src/KNN/Flowers)
+include_directories(serverSrc/KNN)
+include_directories(serverSrc/KNN/DistanceCalcs)
+include_directories(serverSrc/KNN/Flowers)
 
 add_executable(AdvancedProgramming_ass2
-        src/main.cpp
-        src/KNN/DistanceCalcs/ChebyshevDistance.cpp
-        src/KNN/DistanceCalcs/ChebyshevDistance.hpp
-        src/KNN/DistanceCalcs/DistanceCalculator.hpp
-        src/KNN/DistanceCalcs/EuclideanDistance.cpp
-        src/KNN/DistanceCalcs/EuclideanDistance.hpp
-        src/KNN/DistanceCalcs/ManhattanDistance.cpp
-        src/KNN/DistanceCalcs/ManhattanDistance.hpp
-        src/KNN/Flowers/Flower.cpp
-        src/KNN/Flowers/Flower.hpp
-        src/KNN/KNNClassifier.cpp
-        src/KNN/KNNClassifier.hpp
-        src/KNN/KNNFileClassifier.cpp
-        src/KNN/KNNFileClassifier.hpp
-        src/KNN/Point.cpp
-        src/KNN/Point.hpp)
+        serverSrc/main.cpp
+        serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp
+        serverSrc/KNN/DistanceCalcs/ChebyshevDistance.hpp
+        serverSrc/KNN/DistanceCalcs/DistanceCalculator.hpp
+        serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp
+        serverSrc/KNN/DistanceCalcs/EuclideanDistance.hpp
+        serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp
+        serverSrc/KNN/DistanceCalcs/ManhattanDistance.hpp
+        serverSrc/KNN/Flowers/Flower.cpp
+        serverSrc/KNN/Flowers/Flower.hpp
+        serverSrc/KNN/KNNClassifier.cpp
+        serverSrc/KNN/KNNClassifier.hpp
+        serverSrc/KNN/KNNFileClassifier.cpp
+        serverSrc/KNN/KNNFileClassifier.hpp
+        serverSrc/KNN/Point.cpp
+        serverSrc/KNN/Point.hpp)
