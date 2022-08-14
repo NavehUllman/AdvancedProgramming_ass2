@@ -4,7 +4,7 @@
 #include <string>
 
 //constructor - from point and string
-Flower::Flower(Point &point1, std::string name) :
+Flower::Flower(const Point &point1, std::string name) :
                     point(point1), type(std::move(name)) { }
 
 Flower::Flower(const std::string &str) : point(std::vector<double>{0}){
@@ -29,6 +29,14 @@ Point& Flower::getPoint(){
 
 std::string& Flower::getType(){
     return type;
+}
+std::string Flower::toFileFormat(std::vector<Flower> vec){
+    std::string res;
+    for(int i = 0;i < vec.size()-1 ; i++) {
+        res.append(vec[i].getType()+"\n");
+    }
+    res.append(vec[vec.size()-1].getType());
+    return res;
 }
 std::ostream& operator<<(std::ostream& os, Flower& a){
     os << "[" << a.getPoint() << ", " << a.getType() << "]";

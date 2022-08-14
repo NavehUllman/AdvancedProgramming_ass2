@@ -10,6 +10,7 @@
 class DistanceCalculator {
 public:
     virtual double calculate(const Point &p1, const Point &p2) = 0;
+    virtual ~DistanceCalculator() = default;
 };
 
 

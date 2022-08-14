@@ -20,7 +20,7 @@ public:
      * @param pathToUnclassified the path to the unclassified points file.
      * @param pathToOutputFolder the path to where the output files will be created.
      */
-    void classify(int k, const std::string& pathToUnclassified, const std::string& pathToOutputFolder) const;
+    std::vector<Flower> classify(int k, const std::vector<Point> &unclassified, DistanceCalculator *dc) const;
 
 private:
     /**
@@ -34,18 +34,12 @@ private:
     * @return the vector of flowers.
     */
     static std::vector <Flower> getDataFromFile(const std::string &fileName) ;
-    /**
-    * Creates a new vector with the points (unclassified flowers) from the given file.
-    * @param fileName the given file.
-    * @return the vector.
-    */
-    static std::vector <Point> getPointsFromFile(const std::string &fileName) ;
-    /**
-    * Copy the classified points to a given file.
-    * @param fileName the file.
-    * @param flowers the classified points (as flowers)
-    */
-    static void copyToFile(const std::string &fileName, std::vector <Flower> flowers) ;
+//    /**
+//    * Copy the classified points to a given file.
+//    * @param fileName the file.
+//    * @param flowers the classified points (as flowers)
+//    */
+//    static void copyToFile(const std::string &fileName, std::vector <Flower> flowers) ;
     /**
      * classify all of the points according to the given classifier, distance calculator, and k.
      * @param dc the distance calculator.
@@ -55,7 +49,7 @@ private:
      * @return new vector of classified points (as flowers).
      */
     static std::vector <Flower> classifyAll(DistanceCalculator &dc, KNNClassifier &knn,
-                                     std::vector<Point> &unclassifiedPoints, int k) ;
+                                     const std::vector<Point> &unclassifiedPoints, int k) ;
 
 };
 
