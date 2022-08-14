@@ -73,6 +73,7 @@ void Server::classifyKNN(int clientSock) {
 
             KNNFileClassifier knnFileClassifier("KNN/Database/classified.csv");
             DistanceCalculator *dc = new EuclideanDistance();
+            std::cout << "#Classifying unclassified points (sent from client: " << clientSock <<")"<<std::endl;
             std::vector<Flower> classified = knnFileClassifier.classify(5, unclassified, dc);
             delete dc;
             std::string toSend = Flower::toFileFormat(classified);
