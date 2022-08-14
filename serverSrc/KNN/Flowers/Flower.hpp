@@ -17,7 +17,7 @@ class Flower {
      * @param point set of values.
      * @param type of the flower.
      */
-    Flower(Point &point, std::string type);
+    Flower(const Point &point, std::string type);
     /**
      * Constructor using a string representation.
      * @param str in form : "value,value,value,...,value,type".
@@ -36,6 +36,11 @@ class Flower {
      * @return std::string
      */
     std::string& getType();
+    /**
+     * @param vec vector of flowers.
+     * @return the string that represent that flowers in a file format (only flower-type, seperated by \n).
+     */
+    static std::string toFileFormat(std::vector<Flower> vec);
 
     friend std::ostream& operator<<(std::ostream& os, Flower& a);
 

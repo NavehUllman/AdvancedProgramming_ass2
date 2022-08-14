@@ -30,8 +30,8 @@ public:
      * Disconnects from the server.
      */
     void disconnect();
-private:
 
+private:
     //if the client is connected to a server.
     bool connected = false;
 
@@ -46,8 +46,7 @@ private:
      */
     static std::string getDataFromFile(std::string pathToUnclassified);
 
-
 };
 
-
 #endif //ADVANCEDPROGRAMMING_ASS2_CLIENT_H
+

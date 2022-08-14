@@ -31,6 +31,13 @@ class Point {
      * @return the number of double values.
      */
     int getLength() const;
+    /**
+     * @param buffer list of points (represented by strings), seperated by a char.
+     * @param c the char.
+     * @return a vector of those points.
+     */
+    static std::vector<Point> toPoints(std::string& buffer, char c);
+
 
     /**
      * Overloading the << operator.
