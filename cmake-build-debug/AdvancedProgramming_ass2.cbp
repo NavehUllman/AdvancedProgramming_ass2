@@ -44,9 +44,9 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN"/>
-					<Add directory="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/DistanceCalcs"/>
-					<Add directory="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/Flowers"/>
+					<Add directory="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN"/>
+					<Add directory="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/DistanceCalcs"/>
+					<Add directory="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/Flowers"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
@@ -70,9 +70,9 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN"/>
-					<Add directory="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/DistanceCalcs"/>
-					<Add directory="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/Flowers"/>
+					<Add directory="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN"/>
+					<Add directory="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/DistanceCalcs"/>
+					<Add directory="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/Flowers"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include"/>
@@ -90,52 +90,52 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/DistanceCalcs/ChebyshevDistance.cpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/DistanceCalcs/ChebyshevDistance.hpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/DistanceCalcs/ChebyshevDistance.hpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/DistanceCalcs/DistanceCalculator.hpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/DistanceCalcs/DistanceCalculator.hpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/DistanceCalcs/EuclideanDistance.cpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/DistanceCalcs/EuclideanDistance.hpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/DistanceCalcs/EuclideanDistance.hpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/DistanceCalcs/ManhattanDistance.cpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/DistanceCalcs/ManhattanDistance.hpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/DistanceCalcs/ManhattanDistance.hpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/Flowers/Flower.cpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/Flowers/Flower.cpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/Flowers/Flower.hpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/Flowers/Flower.hpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/KNNClassifier.cpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/KNNClassifier.cpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/KNNClassifier.hpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/KNNClassifier.hpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/KNNFileClassifier.cpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/KNNFileClassifier.cpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/KNNFileClassifier.hpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/KNNFileClassifier.hpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/Point.cpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/Point.cpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/Point.hpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/Point.hpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
-		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/main.cpp">
+		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/main.cpp">
 			<Option target="AdvancedProgramming_ass2"/>
 		</Unit>
 		<Unit filename="/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/CMakeLists.txt">
