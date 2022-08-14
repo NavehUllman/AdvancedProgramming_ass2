@@ -106,9 +106,3 @@ void Client::copyToFile(std::string pathToOutput, std::string &classified) {
     output << classified;
     output.close();
 }
-
-
-
-
-
-
