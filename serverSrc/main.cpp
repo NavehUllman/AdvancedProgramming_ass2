@@ -1,6 +1,7 @@
 
 #include "KNN/KNNFileClassifier.hpp"
+#include "Server.h"
 int main(){
-    KNNFileClassifier knnFileClassifier("serverSrc/KNN/Input/classified.csv");
-    knnFileClassifier.classify(5, "serverSrc/KNN/Input/unclassified.csv", "serverSrc/KNN/Output/");
+    Server server(5555,1);
+    server.waitForClients();
 }

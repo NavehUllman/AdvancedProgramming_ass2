@@ -4,7 +4,7 @@
 #include <string>
 
 //constructor - from point and string
-Flower::Flower(Point &point1, std::string name) :
+Flower::Flower(const Point &point1, std::string name) :
                     point(point1), type(std::move(name)) { }
 
 Flower::Flower(const std::string &str) : point(std::vector<double>{0}){

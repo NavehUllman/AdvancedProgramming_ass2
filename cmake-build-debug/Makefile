@@ -129,197 +129,245 @@ AdvancedProgramming_ass2/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/build
 .PHONY : AdvancedProgramming_ass2/fast
 
-src/KNN/DistanceCalcs/ChebyshevDistance.o: src/KNN/DistanceCalcs/ChebyshevDistance.cpp.o
-.PHONY : src/KNN/DistanceCalcs/ChebyshevDistance.o
+clientSrc/Client.o: clientSrc/Client.cpp.o
+.PHONY : clientSrc/Client.o
 
 # target to build an object file
-src/KNN/DistanceCalcs/ChebyshevDistance.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/DistanceCalcs/ChebyshevDistance.cpp.o
-.PHONY : src/KNN/DistanceCalcs/ChebyshevDistance.cpp.o
+clientSrc/Client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/clientSrc/Client.cpp.o
+.PHONY : clientSrc/Client.cpp.o
 
-src/KNN/DistanceCalcs/ChebyshevDistance.i: src/KNN/DistanceCalcs/ChebyshevDistance.cpp.i
-.PHONY : src/KNN/DistanceCalcs/ChebyshevDistance.i
+clientSrc/Client.i: clientSrc/Client.cpp.i
+.PHONY : clientSrc/Client.i
 
 # target to preprocess a source file
-src/KNN/DistanceCalcs/ChebyshevDistance.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/DistanceCalcs/ChebyshevDistance.cpp.i
-.PHONY : src/KNN/DistanceCalcs/ChebyshevDistance.cpp.i
+clientSrc/Client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/clientSrc/Client.cpp.i
+.PHONY : clientSrc/Client.cpp.i
 
-src/KNN/DistanceCalcs/ChebyshevDistance.s: src/KNN/DistanceCalcs/ChebyshevDistance.cpp.s
-.PHONY : src/KNN/DistanceCalcs/ChebyshevDistance.s
+clientSrc/Client.s: clientSrc/Client.cpp.s
+.PHONY : clientSrc/Client.s
 
 # target to generate assembly for a file
-src/KNN/DistanceCalcs/ChebyshevDistance.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/DistanceCalcs/ChebyshevDistance.cpp.s
-.PHONY : src/KNN/DistanceCalcs/ChebyshevDistance.cpp.s
+clientSrc/Client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/clientSrc/Client.cpp.s
+.PHONY : clientSrc/Client.cpp.s
 
-src/KNN/DistanceCalcs/EuclideanDistance.o: src/KNN/DistanceCalcs/EuclideanDistance.cpp.o
-.PHONY : src/KNN/DistanceCalcs/EuclideanDistance.o
+serverSrc/KNN/DistanceCalcs/ChebyshevDistance.o: serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp.o
+.PHONY : serverSrc/KNN/DistanceCalcs/ChebyshevDistance.o
 
 # target to build an object file
-src/KNN/DistanceCalcs/EuclideanDistance.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/DistanceCalcs/EuclideanDistance.cpp.o
-.PHONY : src/KNN/DistanceCalcs/EuclideanDistance.cpp.o
+serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp.o
+.PHONY : serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp.o
 
-src/KNN/DistanceCalcs/EuclideanDistance.i: src/KNN/DistanceCalcs/EuclideanDistance.cpp.i
-.PHONY : src/KNN/DistanceCalcs/EuclideanDistance.i
+serverSrc/KNN/DistanceCalcs/ChebyshevDistance.i: serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp.i
+.PHONY : serverSrc/KNN/DistanceCalcs/ChebyshevDistance.i
 
 # target to preprocess a source file
-src/KNN/DistanceCalcs/EuclideanDistance.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/DistanceCalcs/EuclideanDistance.cpp.i
-.PHONY : src/KNN/DistanceCalcs/EuclideanDistance.cpp.i
+serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp.i
+.PHONY : serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp.i
 
-src/KNN/DistanceCalcs/EuclideanDistance.s: src/KNN/DistanceCalcs/EuclideanDistance.cpp.s
-.PHONY : src/KNN/DistanceCalcs/EuclideanDistance.s
+serverSrc/KNN/DistanceCalcs/ChebyshevDistance.s: serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp.s
+.PHONY : serverSrc/KNN/DistanceCalcs/ChebyshevDistance.s
 
 # target to generate assembly for a file
-src/KNN/DistanceCalcs/EuclideanDistance.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/DistanceCalcs/EuclideanDistance.cpp.s
-.PHONY : src/KNN/DistanceCalcs/EuclideanDistance.cpp.s
+serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp.s
+.PHONY : serverSrc/KNN/DistanceCalcs/ChebyshevDistance.cpp.s
 
-src/KNN/DistanceCalcs/ManhattanDistance.o: src/KNN/DistanceCalcs/ManhattanDistance.cpp.o
-.PHONY : src/KNN/DistanceCalcs/ManhattanDistance.o
+serverSrc/KNN/DistanceCalcs/EuclideanDistance.o: serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp.o
+.PHONY : serverSrc/KNN/DistanceCalcs/EuclideanDistance.o
 
 # target to build an object file
-src/KNN/DistanceCalcs/ManhattanDistance.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/DistanceCalcs/ManhattanDistance.cpp.o
-.PHONY : src/KNN/DistanceCalcs/ManhattanDistance.cpp.o
+serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp.o
+.PHONY : serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp.o
 
-src/KNN/DistanceCalcs/ManhattanDistance.i: src/KNN/DistanceCalcs/ManhattanDistance.cpp.i
-.PHONY : src/KNN/DistanceCalcs/ManhattanDistance.i
+serverSrc/KNN/DistanceCalcs/EuclideanDistance.i: serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp.i
+.PHONY : serverSrc/KNN/DistanceCalcs/EuclideanDistance.i
 
 # target to preprocess a source file
-src/KNN/DistanceCalcs/ManhattanDistance.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/DistanceCalcs/ManhattanDistance.cpp.i
-.PHONY : src/KNN/DistanceCalcs/ManhattanDistance.cpp.i
+serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp.i
+.PHONY : serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp.i
 
-src/KNN/DistanceCalcs/ManhattanDistance.s: src/KNN/DistanceCalcs/ManhattanDistance.cpp.s
-.PHONY : src/KNN/DistanceCalcs/ManhattanDistance.s
+serverSrc/KNN/DistanceCalcs/EuclideanDistance.s: serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp.s
+.PHONY : serverSrc/KNN/DistanceCalcs/EuclideanDistance.s
 
 # target to generate assembly for a file
-src/KNN/DistanceCalcs/ManhattanDistance.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/DistanceCalcs/ManhattanDistance.cpp.s
-.PHONY : src/KNN/DistanceCalcs/ManhattanDistance.cpp.s
+serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp.s
+.PHONY : serverSrc/KNN/DistanceCalcs/EuclideanDistance.cpp.s
 
-src/KNN/Flowers/Flower.o: src/KNN/Flowers/Flower.cpp.o
-.PHONY : src/KNN/Flowers/Flower.o
+serverSrc/KNN/DistanceCalcs/ManhattanDistance.o: serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp.o
+.PHONY : serverSrc/KNN/DistanceCalcs/ManhattanDistance.o
 
 # target to build an object file
-src/KNN/Flowers/Flower.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/Flowers/Flower.cpp.o
-.PHONY : src/KNN/Flowers/Flower.cpp.o
+serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp.o
+.PHONY : serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp.o
 
-src/KNN/Flowers/Flower.i: src/KNN/Flowers/Flower.cpp.i
-.PHONY : src/KNN/Flowers/Flower.i
+serverSrc/KNN/DistanceCalcs/ManhattanDistance.i: serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp.i
+.PHONY : serverSrc/KNN/DistanceCalcs/ManhattanDistance.i
 
 # target to preprocess a source file
-src/KNN/Flowers/Flower.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/Flowers/Flower.cpp.i
-.PHONY : src/KNN/Flowers/Flower.cpp.i
+serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp.i
+.PHONY : serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp.i
 
-src/KNN/Flowers/Flower.s: src/KNN/Flowers/Flower.cpp.s
-.PHONY : src/KNN/Flowers/Flower.s
+serverSrc/KNN/DistanceCalcs/ManhattanDistance.s: serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp.s
+.PHONY : serverSrc/KNN/DistanceCalcs/ManhattanDistance.s
 
 # target to generate assembly for a file
-src/KNN/Flowers/Flower.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/Flowers/Flower.cpp.s
-.PHONY : src/KNN/Flowers/Flower.cpp.s
+serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp.s
+.PHONY : serverSrc/KNN/DistanceCalcs/ManhattanDistance.cpp.s
 
-src/KNN/KNNClassifier.o: src/KNN/KNNClassifier.cpp.o
-.PHONY : src/KNN/KNNClassifier.o
+serverSrc/KNN/Flowers/Flower.o: serverSrc/KNN/Flowers/Flower.cpp.o
+.PHONY : serverSrc/KNN/Flowers/Flower.o
 
 # target to build an object file
-src/KNN/KNNClassifier.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/KNNClassifier.cpp.o
-.PHONY : src/KNN/KNNClassifier.cpp.o
+serverSrc/KNN/Flowers/Flower.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/Flowers/Flower.cpp.o
+.PHONY : serverSrc/KNN/Flowers/Flower.cpp.o
 
-src/KNN/KNNClassifier.i: src/KNN/KNNClassifier.cpp.i
-.PHONY : src/KNN/KNNClassifier.i
+serverSrc/KNN/Flowers/Flower.i: serverSrc/KNN/Flowers/Flower.cpp.i
+.PHONY : serverSrc/KNN/Flowers/Flower.i
 
 # target to preprocess a source file
-src/KNN/KNNClassifier.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/KNNClassifier.cpp.i
-.PHONY : src/KNN/KNNClassifier.cpp.i
+serverSrc/KNN/Flowers/Flower.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/Flowers/Flower.cpp.i
+.PHONY : serverSrc/KNN/Flowers/Flower.cpp.i
 
-src/KNN/KNNClassifier.s: src/KNN/KNNClassifier.cpp.s
-.PHONY : src/KNN/KNNClassifier.s
+serverSrc/KNN/Flowers/Flower.s: serverSrc/KNN/Flowers/Flower.cpp.s
+.PHONY : serverSrc/KNN/Flowers/Flower.s
 
 # target to generate assembly for a file
-src/KNN/KNNClassifier.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/KNNClassifier.cpp.s
-.PHONY : src/KNN/KNNClassifier.cpp.s
+serverSrc/KNN/Flowers/Flower.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/Flowers/Flower.cpp.s
+.PHONY : serverSrc/KNN/Flowers/Flower.cpp.s
 
-src/KNN/KNNFileClassifier.o: src/KNN/KNNFileClassifier.cpp.o
-.PHONY : src/KNN/KNNFileClassifier.o
+serverSrc/KNN/KNNClassifier.o: serverSrc/KNN/KNNClassifier.cpp.o
+.PHONY : serverSrc/KNN/KNNClassifier.o
 
 # target to build an object file
-src/KNN/KNNFileClassifier.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/KNNFileClassifier.cpp.o
-.PHONY : src/KNN/KNNFileClassifier.cpp.o
+serverSrc/KNN/KNNClassifier.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/KNNClassifier.cpp.o
+.PHONY : serverSrc/KNN/KNNClassifier.cpp.o
 
-src/KNN/KNNFileClassifier.i: src/KNN/KNNFileClassifier.cpp.i
-.PHONY : src/KNN/KNNFileClassifier.i
+serverSrc/KNN/KNNClassifier.i: serverSrc/KNN/KNNClassifier.cpp.i
+.PHONY : serverSrc/KNN/KNNClassifier.i
 
 # target to preprocess a source file
-src/KNN/KNNFileClassifier.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/KNNFileClassifier.cpp.i
-.PHONY : src/KNN/KNNFileClassifier.cpp.i
+serverSrc/KNN/KNNClassifier.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/KNNClassifier.cpp.i
+.PHONY : serverSrc/KNN/KNNClassifier.cpp.i
 
-src/KNN/KNNFileClassifier.s: src/KNN/KNNFileClassifier.cpp.s
-.PHONY : src/KNN/KNNFileClassifier.s
+serverSrc/KNN/KNNClassifier.s: serverSrc/KNN/KNNClassifier.cpp.s
+.PHONY : serverSrc/KNN/KNNClassifier.s
 
 # target to generate assembly for a file
-src/KNN/KNNFileClassifier.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/KNNFileClassifier.cpp.s
-.PHONY : src/KNN/KNNFileClassifier.cpp.s
+serverSrc/KNN/KNNClassifier.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/KNNClassifier.cpp.s
+.PHONY : serverSrc/KNN/KNNClassifier.cpp.s
 
-src/KNN/Point.o: src/KNN/Point.cpp.o
-.PHONY : src/KNN/Point.o
+serverSrc/KNN/KNNFileClassifier.o: serverSrc/KNN/KNNFileClassifier.cpp.o
+.PHONY : serverSrc/KNN/KNNFileClassifier.o
 
 # target to build an object file
-src/KNN/Point.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/Point.cpp.o
-.PHONY : src/KNN/Point.cpp.o
+serverSrc/KNN/KNNFileClassifier.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/KNNFileClassifier.cpp.o
+.PHONY : serverSrc/KNN/KNNFileClassifier.cpp.o
 
-src/KNN/Point.i: src/KNN/Point.cpp.i
-.PHONY : src/KNN/Point.i
+serverSrc/KNN/KNNFileClassifier.i: serverSrc/KNN/KNNFileClassifier.cpp.i
+.PHONY : serverSrc/KNN/KNNFileClassifier.i
 
 # target to preprocess a source file
-src/KNN/Point.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/Point.cpp.i
-.PHONY : src/KNN/Point.cpp.i
+serverSrc/KNN/KNNFileClassifier.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/KNNFileClassifier.cpp.i
+.PHONY : serverSrc/KNN/KNNFileClassifier.cpp.i
 
-src/KNN/Point.s: src/KNN/Point.cpp.s
-.PHONY : src/KNN/Point.s
+serverSrc/KNN/KNNFileClassifier.s: serverSrc/KNN/KNNFileClassifier.cpp.s
+.PHONY : serverSrc/KNN/KNNFileClassifier.s
 
 # target to generate assembly for a file
-src/KNN/Point.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/KNN/Point.cpp.s
-.PHONY : src/KNN/Point.cpp.s
+serverSrc/KNN/KNNFileClassifier.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/KNNFileClassifier.cpp.s
+.PHONY : serverSrc/KNN/KNNFileClassifier.cpp.s
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+serverSrc/KNN/Point.o: serverSrc/KNN/Point.cpp.o
+.PHONY : serverSrc/KNN/Point.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+serverSrc/KNN/Point.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/Point.cpp.o
+.PHONY : serverSrc/KNN/Point.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+serverSrc/KNN/Point.i: serverSrc/KNN/Point.cpp.i
+.PHONY : serverSrc/KNN/Point.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+serverSrc/KNN/Point.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/Point.cpp.i
+.PHONY : serverSrc/KNN/Point.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+serverSrc/KNN/Point.s: serverSrc/KNN/Point.cpp.s
+.PHONY : serverSrc/KNN/Point.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+serverSrc/KNN/Point.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/KNN/Point.cpp.s
+.PHONY : serverSrc/KNN/Point.cpp.s
+
+serverSrc/Server.o: serverSrc/Server.cpp.o
+.PHONY : serverSrc/Server.o
+
+# target to build an object file
+serverSrc/Server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/Server.cpp.o
+.PHONY : serverSrc/Server.cpp.o
+
+serverSrc/Server.i: serverSrc/Server.cpp.i
+.PHONY : serverSrc/Server.i
+
+# target to preprocess a source file
+serverSrc/Server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/Server.cpp.i
+.PHONY : serverSrc/Server.cpp.i
+
+serverSrc/Server.s: serverSrc/Server.cpp.s
+.PHONY : serverSrc/Server.s
+
+# target to generate assembly for a file
+serverSrc/Server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/Server.cpp.s
+.PHONY : serverSrc/Server.cpp.s
+
+serverSrc/main.o: serverSrc/main.cpp.o
+.PHONY : serverSrc/main.o
+
+# target to build an object file
+serverSrc/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/main.cpp.o
+.PHONY : serverSrc/main.cpp.o
+
+serverSrc/main.i: serverSrc/main.cpp.i
+.PHONY : serverSrc/main.i
+
+# target to preprocess a source file
+serverSrc/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/main.cpp.i
+.PHONY : serverSrc/main.cpp.i
+
+serverSrc/main.s: serverSrc/main.cpp.s
+.PHONY : serverSrc/main.s
+
+# target to generate assembly for a file
+serverSrc/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/AdvancedProgramming_ass2.dir/build.make CMakeFiles/AdvancedProgramming_ass2.dir/serverSrc/main.cpp.s
+.PHONY : serverSrc/main.cpp.s
 
 # Help Target
 help:
@@ -330,30 +378,36 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... AdvancedProgramming_ass2"
-	@echo "... src/KNN/DistanceCalcs/ChebyshevDistance.o"
-	@echo "... src/KNN/DistanceCalcs/ChebyshevDistance.i"
-	@echo "... src/KNN/DistanceCalcs/ChebyshevDistance.s"
-	@echo "... src/KNN/DistanceCalcs/EuclideanDistance.o"
-	@echo "... src/KNN/DistanceCalcs/EuclideanDistance.i"
-	@echo "... src/KNN/DistanceCalcs/EuclideanDistance.s"
-	@echo "... src/KNN/DistanceCalcs/ManhattanDistance.o"
-	@echo "... src/KNN/DistanceCalcs/ManhattanDistance.i"
-	@echo "... src/KNN/DistanceCalcs/ManhattanDistance.s"
-	@echo "... src/KNN/Flowers/Flower.o"
-	@echo "... src/KNN/Flowers/Flower.i"
-	@echo "... src/KNN/Flowers/Flower.s"
-	@echo "... src/KNN/KNNClassifier.o"
-	@echo "... src/KNN/KNNClassifier.i"
-	@echo "... src/KNN/KNNClassifier.s"
-	@echo "... src/KNN/KNNFileClassifier.o"
-	@echo "... src/KNN/KNNFileClassifier.i"
-	@echo "... src/KNN/KNNFileClassifier.s"
-	@echo "... src/KNN/Point.o"
-	@echo "... src/KNN/Point.i"
-	@echo "... src/KNN/Point.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... clientSrc/Client.o"
+	@echo "... clientSrc/Client.i"
+	@echo "... clientSrc/Client.s"
+	@echo "... serverSrc/KNN/DistanceCalcs/ChebyshevDistance.o"
+	@echo "... serverSrc/KNN/DistanceCalcs/ChebyshevDistance.i"
+	@echo "... serverSrc/KNN/DistanceCalcs/ChebyshevDistance.s"
+	@echo "... serverSrc/KNN/DistanceCalcs/EuclideanDistance.o"
+	@echo "... serverSrc/KNN/DistanceCalcs/EuclideanDistance.i"
+	@echo "... serverSrc/KNN/DistanceCalcs/EuclideanDistance.s"
+	@echo "... serverSrc/KNN/DistanceCalcs/ManhattanDistance.o"
+	@echo "... serverSrc/KNN/DistanceCalcs/ManhattanDistance.i"
+	@echo "... serverSrc/KNN/DistanceCalcs/ManhattanDistance.s"
+	@echo "... serverSrc/KNN/Flowers/Flower.o"
+	@echo "... serverSrc/KNN/Flowers/Flower.i"
+	@echo "... serverSrc/KNN/Flowers/Flower.s"
+	@echo "... serverSrc/KNN/KNNClassifier.o"
+	@echo "... serverSrc/KNN/KNNClassifier.i"
+	@echo "... serverSrc/KNN/KNNClassifier.s"
+	@echo "... serverSrc/KNN/KNNFileClassifier.o"
+	@echo "... serverSrc/KNN/KNNFileClassifier.i"
+	@echo "... serverSrc/KNN/KNNFileClassifier.s"
+	@echo "... serverSrc/KNN/Point.o"
+	@echo "... serverSrc/KNN/Point.i"
+	@echo "... serverSrc/KNN/Point.s"
+	@echo "... serverSrc/Server.o"
+	@echo "... serverSrc/Server.i"
+	@echo "... serverSrc/Server.s"
+	@echo "... serverSrc/main.o"
+	@echo "... serverSrc/main.i"
+	@echo "... serverSrc/main.s"
 .PHONY : help
 
 

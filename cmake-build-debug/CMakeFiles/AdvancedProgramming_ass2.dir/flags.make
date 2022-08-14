@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN -I/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/DistanceCalcs -I/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/src/KNN/Flowers
+CXX_INCLUDES = -I/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN -I/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/DistanceCalcs -I/Users/arielverbin/CLionProjects/AdvancedProgramming_ass2/serverSrc/KNN/Flowers
 
 CXX_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.0.sdk -std=gnu++14
 

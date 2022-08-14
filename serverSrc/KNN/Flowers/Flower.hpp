@@ -17,7 +17,7 @@ class Flower {
      * @param point set of values.
      * @param type of the flower.
      */
-    Flower(Point &point, std::string type);
+    Flower(const Point &point, std::string type);
     /**
      * Constructor using a string representation.
      * @param str in form : "value,value,value,...,value,type".

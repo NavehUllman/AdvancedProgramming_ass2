@@ -23,4 +23,4 @@ add_executable(AdvancedProgramming_ass2
         serverSrc/KNN/KNNFileClassifier.cpp
         serverSrc/KNN/KNNFileClassifier.hpp
         serverSrc/KNN/Point.cpp
-        serverSrc/KNN/Point.hpp)
+        serverSrc/KNN/Point.hpp serverSrc/Server.cpp serverSrc/Server.h clientSrc/Client.cpp clientSrc/Client.h)
