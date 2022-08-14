@@ -1,107 +1,127 @@
 #include "Server.h"
 #include "KNN/KNNFileClassifier.hpp"
 #include "KNN/DistanceCalcs/EuclideanDistance.hpp"
-Server::Server(int port, int maxClients) : port(port), maxClients(maxClients) {
+
+const int Server::bufferSize = 512;
+
+Server::Server(int port, int maxClients) : socketAddress{}, maxClients(maxClients) {
     this->sock = socket(AF_INET, SOCK_STREAM, 0); //create a new socket - IPv4, TCP.
     if (this->sock < 0) {
         perror("Error creating socket");
         exit(1);
     }
+    this->bind(port);
+    this->listen();
 
-    struct sockaddr_in sin{}; //new struct to save the socket address.
+    this->numClients = 0;
+}
 
-    memset(&sin, 0, sizeof(sin));
-    sin.sin_family = AF_INET; //family (TCP)
-    sin.sin_addr.s_addr = INADDR_ANY;//IP - on our local machine.
-    sin.sin_port = htons(this->port); //selected port.
+void Server::bind(const int port) {
+    memset(&socketAddress, 0, sizeof(this->socketAddress));
+    this->socketAddress.sin_family = AF_INET; //family (TCP)
+    this->socketAddress.sin_addr.s_addr = INADDR_ANY;//IP - on our local machine.
+    this->socketAddress.sin_port = htons(port); //selected port.
 
-    if (bind(this->sock, (struct sockaddr *) &sin, sizeof(sin)) < 0) { //bind new socket to selected socked address.
+    //bind new socket to selected socked address.
+    if (::bind(this->sock, (struct sockaddr *) &socketAddress, sizeof(socketAddress)) < 0) {
         perror("Error binding socket to given socket address");
         exit(1);
     }
+}
 
-    if (listen(this->sock, this->maxClients) < 0) {
+void Server::listen() {
+    if (::listen(this->sock, this->maxClients) < 0) {
         perror("Error listening to a socket");
         exit(1);
     }
-
-}
-Server& Server::getServerFrom(int port) {
-    for(auto &p: Server::activeServers) {
-        if(port == p.port) {
-            return p;
-        }
-    }
-    throw std::invalid_argument("No active servers on given port.");
 }
 
 bool Server::waitForClients() {
-    if(this->numClients >= this->maxClients) {
+    if (this->numClients >= this->maxClients) {
+        std::cout << "Cannot wait for more clients: at max capacity." << std::endl;
         return false;
     }
     struct sockaddr_in client_sin{}; //new socked address of new client.
     unsigned int addr_len = sizeof(client_sin);
-    //wait until a client connects, create a new socket.
-    int clientSock = accept(this->sock,  (struct sockaddr *) &client_sin,  &addr_len);
+    //wait until a client connects. then, create a new socket.
+    int clientSock = accept(this->sock, (struct sockaddr *) &client_sin, &addr_len);
     if (clientSock < 0) {
         perror("Error accepting client");
+        close(sock);
         exit(1);
     }
     this->numClients++;
+    std::cout <<"#New client (" << clientSock << ") connected." <<std::endl;
     //In the future it will call this function via a new thread, the main thread will keep accepting clients.
-    this->communicate(clientSock);
+    this->classifyKNN(clientSock);
     return true;
 }
+
 void Server::removeClient(int clientSock) {
+    std::cout << "#Disconnects from client (" << clientSock << ")..." << std::endl;
     close(clientSock);
     this->numClients--;
 }
 
-void Server::communicate(int clientSock) {
-    std::vector<Point> unclassified = this->receive(clientSock);
-    //Classifies:
-    KNNFileClassifier knnFileClassifier("Input/classified.csv");
-    DistanceCalculator *dc = new EuclideanDistance();
-    std::vector<Flower> classidied = knnFileClassifier.classify(5,unclassified,dc);
-    this->send(clientSock, classidied);
-    delete dc;
+void Server::classifyKNN(int clientSock) {
+    bool stillConnected = true;
+    while(stillConnected) {
+        std::string received = this->receive(clientSock);
+        if (received.compare("<client_closed>") == 0) stillConnected = false; //client closed connection.
+        else {
+            std::vector<Point> unclassified = Point::toPoints(received, '|');
+
+            KNNFileClassifier knnFileClassifier("KNN/Database/classified.csv");
+            DistanceCalculator *dc = new EuclideanDistance();
+            std::vector<Flower> classified = knnFileClassifier.classify(5, unclassified, dc);
+            delete dc;
+            std::string toSend = Flower::toFileFormat(classified);
+            this->send(clientSock, toSend);
+        }
+    }
+    this->removeClient(clientSock);
 }
 
-std::vector<Point> Server::receive(int clientSock) {
-    std::vector<Point> unclassified;
-    char buffer[20] = {0};
-    int read_bytes = (int)recv(clientSock, buffer, sizeof(buffer), 0); //receive data from client.
-    if(read_bytes == 0) { //connection closed in the middle, aborting and closing.
+std::string Server::receive(int clientSock) {
+    char buffer[Server::bufferSize];
+
+    int read_bytes = (int) recv(clientSock, buffer, sizeof(buffer), 0); //receive data from client.
+    if (read_bytes == 0) {
+        return "<client_closed>";
+    } else if (read_bytes < 0) {
+        std::cout << "Error reading bytes." << std::endl;
         this->removeClient(clientSock);
+        close(sock);
+        exit(1);
     }
-        while(!strcmp(buffer,"<END_INPUT>")) {
-        unclassified.emplace_back(Point(buffer)); //add new flower to the vector.
-        read_bytes = (int) recv(clientSock, buffer, sizeof(buffer), 0); //receive data from client.
-        if(read_bytes == 0) {
-            std::cout << "Connection closed in the middle, aborting and closing." << std::endl;
-            this->removeClient(clientSock);
-        }
-    }
-    return unclassified;
+    std::string data = buffer;
+    return data;
 }
 
-void Server::send(int clientSock, std::vector<Flower> &classified) {
-    char buffer[20]={0};
-    for(auto &flower : classified) {
-        std::size_t length = flower.getType().copy(buffer,flower.getType().size(),0);
-        buffer[length]='\0';
-        int sent_bytes = (int)::send(clientSock, buffer, sizeof(buffer), 0); //send data for client.
-        if (sent_bytes < 0) {
-            perror("Error sending to client");
-            close(clientSock);
-            exit(1);
-        }
+void Server::send(int clientSock, std::string &classified) {
+    char buffer[bufferSize];
+
+    if (classified.size() >= bufferSize) {
+        std::cout << "Classified file is too big." << std::endl;
+        this->removeClient(clientSock);
+        close(sock);
+        exit(1);
     }
-    char endMessage[] = "<END_OUTPUT>";
-    int sentBytes = (int)::send(clientSock, endMessage, sizeof(endMessage), 0); //send data for client.
-    if (sentBytes < 0) {
-        perror("Error sending to client");
-        close(clientSock);
+
+    strcpy(buffer, classified.c_str());
+
+    int sent_bytes = ::send(clientSock, buffer, sizeof(buffer), 0);
+
+    if (sent_bytes < 0) {
+        std::cout << "error in sending bytes" << std::endl;
+        this->removeClient(clientSock);
+        close(sock);
         exit(1);
     }
 }
+
+void Server::closeServer() {
+    close(sock);
+}
+
+

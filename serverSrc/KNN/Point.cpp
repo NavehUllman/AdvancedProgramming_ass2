@@ -25,6 +25,19 @@ double Point::get(int i) const {
 int Point::getLength() const {
     return (int)data.size();
 }
+std::vector<Point> Point::toPoints(std::string& buffer, char c) {
+    std::vector<Point> vec;
+    int start = 0;
+    int end = (int)buffer.find(c);
+    int i = 0;
+    while (end != -1) {
+        vec.emplace_back(Point(buffer.substr(start, end - start)));
+        i++;
+        start = end + 1;
+        end = (int)buffer.find(c, start);
+    }
+    return std::move(vec);
+}
 std::ostream& operator<<(std::ostream& os, const Point& a){
     os<<"(";
     for(int i = 0; i < a.getLength() - 1; i ++) {

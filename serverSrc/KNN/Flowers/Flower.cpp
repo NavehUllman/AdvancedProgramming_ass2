@@ -30,6 +30,14 @@ Point& Flower::getPoint(){
 std::string& Flower::getType(){
     return type;
 }
+std::string Flower::toFileFormat(std::vector<Flower> vec){
+    std::string res;
+    for(int i = 0;i < vec.size()-1 ; i++) {
+        res.append(vec[i].getType()+"\n");
+    }
+    res.append(vec[vec.size()-1].getType());
+    return res;
+}
 std::ostream& operator<<(std::ostream& os, Flower& a){
     os << "[" << a.getPoint() << ", " << a.getType() << "]";
     return os;

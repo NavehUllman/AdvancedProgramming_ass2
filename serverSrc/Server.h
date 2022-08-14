@@ -13,6 +13,7 @@
 #include "../clientSrc/Client.h"
 #include "KNN/Point.hpp"
 #include "KNN/Flowers/Flower.hpp"
+
 /**
  * Server class is basically a wrapper class to socket.h, making it easier to understand and more OOP.
  */
@@ -25,39 +26,54 @@ public:
     */
     Server(int port, int maxClients);
     /**
-     * @param port the port to which the server is connected.
-     * @return a reference of an instance of the active server in the given port. It might throw an exception and
-     * terminate the program if the port isn't bound to a server.
-     */
-    static Server& getServerFrom(int port);
-    /**
-     * Adds the first client in queue that tries to connect to this server.
-     * @return true if the connection was successful, false if amount of clients already on full capacity.
+     * Waits for clients (meanwhile only one) to connect, and accept them.
+     * @return true if it was successful, false if we reached max amount of clients.
      */
     bool waitForClients();
     /**
      * Receives data from a client.
-     * @param client the client.
+     * @param clientSock the client socket fd.
+     * @return the sent data, as string.
      */
-    std::vector<Point> receive(int clientSock);
+    std::string receive(int clientSock);
     /**
      * Sends data for a client.
-     * @param client the client.
+     * @param clientSock the client socket fd.
+     * @param toSend the message to be sent.
      */
-    void send(int clientSock, std::vector<Flower> &classified);
+    void send(int clientSock, std::string &toSend);
     /**
-     * Send and receive data from client until end of connection.
+     * Receives data from client, classifies it according to the KNN algorithm, and sends it back.
      * @param clientSock socket fd between server and client.
      */
-    void communicate(int clientSock);
+    void classifyKNN(int clientSock);
+    /**
+     * Closes the server's socket.
+     */
+    void closeServer();
 
 private:
-    //Port to which the server socket is bound to, max clients possible.
-    const int port, maxClients;
+    /**
+     * Binds the new socket to a socket address.
+     * @param port the port (as part of the socket address).
+     */
+    void bind(const int port);
+    /**
+     * Announce willingness to accept connections.
+     */
+    void listen();
+
+    //max clients possible.
+    const int maxClients;
+
+    //address of socket.
+    struct sockaddr_in socketAddress;
+
     //Server socket fd, current amount fo clients.
     int sock, numClients;
-    //list of servers in process (so we know to which ports the clients can connect to).
-    static std::vector<Server> activeServers;
+
+    //max size of message.
+    static const int bufferSize;
     /**
     * Closes and remove the given client.
     * @param clientSock socket fd to close.

@@ -31,15 +31,6 @@ std::vector<Flower> KNNFileClassifier::getDataFromFile(const std::string &fileNa
     return l;
 }
 
-//void KNNFileClassifier::copyToFile(const std::string &fileName, std::vector<Flower> flowers) {
-//    ofstream output;
-//    output.open(fileName);
-//    for (auto &flower: flowers) {
-//        output << flower.getType() << endl;
-//    }
-//    output.close();
-//}
-
 std::vector<Flower> KNNFileClassifier::classifyAll(DistanceCalculator &dc, KNNClassifier &knn,
                                                    const std::vector<Point> &unclassifiedPoints, int k) {
     std::vector<Flower> classifiedPoints; //to be filled with the classified points.
