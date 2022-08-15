@@ -13,8 +13,9 @@ public:
     /**
      * sends a file to the connected server.
      * @param pathToUnclassified the path to that file.
+     * @return true if it was successful, false otherwise.
      */
-    void sendFile(const std::string& pathToFile) const;
+    bool sendFile(const std::string& pathToFile) const;
     /**
      * Receives a message from the server.
      * @return the message.

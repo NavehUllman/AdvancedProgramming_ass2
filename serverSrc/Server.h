@@ -27,9 +27,9 @@ public:
     Server(int port, int maxClients);
     /**
      * Waits for clients (meanwhile only one) to connect, and accept them.
-     * @return true if it was successful, false if we reached max amount of clients.
+     * @return the client sock fd of the connected client.
      */
-    bool waitForClients();
+    int waitForClient();
     /**
      * Receives data from a client.
      * @param clientSock the client socket fd.
@@ -40,8 +40,9 @@ public:
      * Sends data for a client.
      * @param clientSock the client socket fd.
      * @param toSend the message to be sent.
+     * @return true if it was successful, false if an error occurred.
      */
-    void send(int clientSock, std::string &toSend);
+    bool send(int clientSock, std::string &toSend);
     /**
      * Receives data from client, classifies it according to the KNN algorithm, and sends it back.
      * @param clientSock socket fd between server and client.
@@ -65,6 +66,9 @@ private:
 
     //max clients possible.
     const int maxClients;
+
+    //path to the database file.
+    const std::string databaseFile = "KNN/Database/classified.csv";
 
     //address of socket.
     struct sockaddr_in socketAddress;

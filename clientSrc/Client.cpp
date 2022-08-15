@@ -18,8 +18,8 @@ void Client::connectToServer(const int port) {
     }
     const char *ip_address = "127.0.0.1"; //connection between the device to itself;
     this->socket = ::socket(AF_INET, SOCK_STREAM, 0);
-    if (socket < 0) {
-        perror("Error creating socket");
+
+    if (socket < 0) { perror("Error creating socket");
         exit(1);
     }
     struct sockaddr_in sin{};
@@ -29,27 +29,12 @@ void Client::connectToServer(const int port) {
     sin.sin_port = htons(port);
 
     if (connect(socket, (struct sockaddr *) &sin, sizeof(sin)) < 0) {
-        perror("Error connecting to server");
+        perror("Error connecting to server"); exit(1);
     }
     this->connected = true;
 }
 
-//void Client::sendFile(std::string pathToUnclassified) {
-//    std::string unclassified = Client::getDataFromFile(pathToUnclassified);
-//
-//    char buffer[Client::bufferSize];
-//    if (unclassified.size() >= Client::bufferSize) {
-//        std::cout << "Unclassified file is too big." << std::endl;
-//    }
-//
-//    strcpy(buffer, unclassified.c_str());
-//    int sent_bytes = ::send(socket, buffer, sizeof(buffer), 0);
-//
-//    if (sent_bytes < 0) {
-//        std::cout << "error in sending bytes" << std::endl;
-//    }
-//}
-void Client::sendFile(const std::string &pathToUnclassified) const {
+bool Client::sendFile(const std::string &pathToUnclassified) const {
     std::string unclassified = Client::getDataFromFile(pathToUnclassified);
     int index = 0;
     char buffer[Client::bufferSize];
@@ -60,32 +45,46 @@ void Client::sendFile(const std::string &pathToUnclassified) const {
         int sent_bytes = (int) ::send(socket, buffer, sizeof(buffer), 0);
         if (sent_bytes < 0) {
             std::cout << "error in sending bytes" << std::endl;
+            return false;
         }
     }
-    //rest of message:
+    //rest of message (will be smaller than 128 bytes):
     strcpy(buffer, ("<" + unclassified.substr(index, unclassified.size()) + ">$").c_str());
     int sent_bytes = (int) ::send(socket, buffer, sizeof(buffer), 0);
 
     if (sent_bytes < 0) {
         std::cout << "error in sending bytes" << std::endl;
+        return false;
     }
+    return true;
+}
+/**
+ * This method takes a fragmented message and returns the defragged version.
+ * for example: <This me><ssage righ><t here& TO: This message right here
+ * @param raw the raw message.
+ * @return the new one.
+ */
+std::string defrag(std::string &raw) {
+    raw.erase(remove(raw.begin(), raw.end(), '<'), raw.end());
+    raw.erase(remove(raw.begin(), raw.end(), '>'), raw.end());
+    raw.erase(remove(raw.begin(), raw.end(), '$'), raw.end());
+    return raw;
 }
 
 std::string Client::receive() const {
-    char buffer[Client::bufferSize];
-    int read_bytes = (int) recv(socket, buffer, sizeof(buffer), 0);
-    if (read_bytes == 0) {
-        std::cout << "Connection was closed on server" << std::endl;
-        close(socket);
-        exit(1);
-    } else if (read_bytes < 0) {
-        std::cout << "Error in reading bytes" << std::endl;
-        close(socket);
-        exit(1);
+    std::string rawMessage;
+    char buffer[Client::bufferSize] = {0};
+    while (rawMessage.find('$') == std::string::npos) {
+        int read_bytes = (int) ::recv(this->socket, buffer, sizeof(buffer), 0); //receive data from client.
+        if (read_bytes == 0) {
+            return "<server_closed>";
+        } else if (read_bytes < 0) {
+            std::cout << "Error reading bytes." << std::endl;
+            return "<server_closed>";
+        }
+        rawMessage.append(buffer);
     }
-
-    std::string classified = buffer;
-    return std::move(classified);
+    return std::move(defrag(rawMessage));
 }
 
 void Client::disconnect() {
