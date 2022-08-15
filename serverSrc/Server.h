@@ -46,7 +46,7 @@ public:
      * Receives data from client, classifies it according to the KNN algorithm, and sends it back.
      * @param clientSock socket fd between server and client.
      */
-    void classifyKNN(int clientSock);
+    void communicate(int clientSock);
     /**
      * Closes the server's socket.
      */

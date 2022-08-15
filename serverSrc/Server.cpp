@@ -53,7 +53,7 @@ bool Server::waitForClients() {
     this->numClients++;
     std::cout <<"#New client (" << clientSock << ") connected." <<std::endl;
     //In the future it will call this function via a new thread, the main thread will keep accepting clients.
-    this->classifyKNN(clientSock);
+    this->communicate(clientSock);
     return true;
 }
 
@@ -63,7 +63,7 @@ void Server::removeClient(int clientSock) {
     this->numClients--;
 }
 
-void Server::classifyKNN(int clientSock) {
+void Server::communicate(int clientSock) {
     bool stillConnected = true;
     while(stillConnected) {
         std::string received = this->receive(clientSock);
@@ -73,7 +73,7 @@ void Server::classifyKNN(int clientSock) {
 
             KNNFileClassifier knnFileClassifier("KNN/Database/classified.csv");
             DistanceCalculator *dc = new EuclideanDistance();
-            std::cout << "#Classifying unclassified points (sent from client: " << clientSock <<")"<<std::endl;
+            std::cout << "#Classifying unclassified points... (sent from client: " << clientSock <<")"<<std::endl;
             std::vector<Flower> classified = knnFileClassifier.classify(5, unclassified, dc);
             delete dc;
             std::string toSend = Flower::toFileFormat(classified);

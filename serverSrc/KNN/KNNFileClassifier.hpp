@@ -34,12 +34,7 @@ private:
     * @return the vector of flowers.
     */
     static std::vector <Flower> getDataFromFile(const std::string &fileName) ;
-//    /**
-//    * Copy the classified points to a given file.
-//    * @param fileName the file.
-//    * @param flowers the classified points (as flowers)
-//    */
-//    static void copyToFile(const std::string &fileName, std::vector <Flower> flowers) ;
+
     /**
      * classify all of the points according to the given classifier, distance calculator, and k.
      * @param dc the distance calculator.
