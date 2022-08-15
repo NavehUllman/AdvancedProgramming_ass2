@@ -1,1 +1,4 @@
 /serverSrc/a.out
+/cmake-build-debug/
+/clientSrc/a.out
+/CMakeLists.txt

@@ -2,7 +2,7 @@
 #include "KNN/KNNFileClassifier.hpp"
 #include "KNN/DistanceCalcs/EuclideanDistance.hpp"
 
-const int Server::bufferSize = 512;
+const int Server::bufferSize = 128;
 
 Server::Server(int port, int maxClients) : socketAddress{}, maxClients(maxClients) {
     this->sock = socket(AF_INET, SOCK_STREAM, 0); //create a new socket - IPv4, TCP.
@@ -29,7 +29,7 @@ void Server::bind(const int port) {
     }
 }
 
-void Server::listen() {
+void Server::listen() const {
     if (::listen(this->sock, this->maxClients) < 0) {
         perror("Error listening to a socket");
         exit(1);
@@ -67,7 +67,7 @@ void Server::communicate(int clientSock) {
     bool stillConnected = true;
     while(stillConnected) {
         std::string received = this->receive(clientSock);
-        if (received.compare("<client_closed>") == 0) stillConnected = false; //client closed connection.
+        if (received == "<client_closed>") stillConnected = false; //client closed connection.
         else {
             std::vector<Point> unclassified = Point::toPoints(received, '|');
 
@@ -82,21 +82,35 @@ void Server::communicate(int clientSock) {
     }
     this->removeClient(clientSock);
 }
-
+/**
+ * This method takes a fragmented message and returns the defragged version.
+ * for example: <This me><ssage righ><t here& TO: This message right here
+ * @param raw the raw message.
+ * @return the new one.
+ */
+std::string defrag(std::string &raw) {
+    raw.erase(remove(raw.begin(), raw.end(), '<'),raw.end());
+    raw.erase(remove(raw.begin(), raw.end(), '>'),raw.end());
+    raw.erase(remove(raw.begin(), raw.end(), '$'),raw.end());
+    std::cout << "new Messge: \n" << raw <<  "\n\n\n";
+    return raw;
+}
 std::string Server::receive(int clientSock) {
-    char buffer[Server::bufferSize];
-
-    int read_bytes = (int) recv(clientSock, buffer, sizeof(buffer), 0); //receive data from client.
-    if (read_bytes == 0) {
-        return "<client_closed>";
-    } else if (read_bytes < 0) {
-        std::cout << "Error reading bytes." << std::endl;
-        this->removeClient(clientSock);
-        close(sock);
-        exit(1);
+    std::string rawMessage;
+    char buffer[Server::bufferSize] = {0};
+    while(rawMessage.find('$') == std::string::npos) {
+        int read_bytes = (int) ::recv(clientSock, buffer, sizeof(buffer), 0); //receive data from client.
+        if (read_bytes == 0) {
+            return "<client_closed>";
+        } else if (read_bytes < 0) {
+            std::cout << "Error reading bytes." << std::endl;
+            this->removeClient(clientSock);
+            close(sock);
+            exit(1);
+        }
+        rawMessage.append(buffer);
     }
-    std::string data = buffer;
-    return data;
+    return defrag(rawMessage);
 }
 
 void Server::send(int clientSock, std::string &classified) {
@@ -111,7 +125,7 @@ void Server::send(int clientSock, std::string &classified) {
 
     strcpy(buffer, classified.c_str());
 
-    int sent_bytes = ::send(clientSock, buffer, sizeof(buffer), 0);
+    int sent_bytes = (int)::send(clientSock, buffer, sizeof(buffer), 0);
 
     if (sent_bytes < 0) {
         std::cout << "error in sending bytes" << std::endl;
@@ -121,7 +135,7 @@ void Server::send(int clientSock, std::string &classified) {
     }
 }
 
-void Server::closeServer() {
+void Server::closeServer() const {
     close(sock);
 }
 

@@ -14,18 +14,18 @@ public:
      * sends a file to the connected server.
      * @param pathToUnclassified the path to that file.
      */
-    void sendFile(std::string pathToFile);
+    void sendFile(const std::string& pathToFile) const;
     /**
      * Receives a message from the server.
      * @return the message.
      */
-    std::string receive();
+    std::string receive() const;
     /**
      * Copies a string to a file.
      * @param pathToOutput the path to the file.
      * @param classified the string.
      */
-    static void copyToFile(std::string pathToOutput, std::string& classified);
+    static void copyToFile(const std::string& pathToOutput, std::string& classified);
     /**
      * Disconnects from the server.
      */
@@ -44,7 +44,7 @@ private:
      * @param pathToUnclassified path to a file.
      * @return the data from the file as string.
      */
-    static std::string getDataFromFile(std::string pathToUnclassified);
+    static std::string getDataFromFile(const std::string& pathToUnclassified);
 
 };
 

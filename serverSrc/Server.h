@@ -50,7 +50,7 @@ public:
     /**
      * Closes the server's socket.
      */
-    void closeServer();
+    void closeServer() const;
 
 private:
     /**
@@ -61,7 +61,7 @@ private:
     /**
      * Announce willingness to accept connections.
      */
-    void listen();
+    void listen() const;
 
     //max clients possible.
     const int maxClients;

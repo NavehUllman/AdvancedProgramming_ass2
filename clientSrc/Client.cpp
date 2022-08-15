@@ -1,15 +1,14 @@
 #include <iostream>
 #include <sys/socket.h>
-#include <stdio.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-#include <string.h>
+#include <string>
 #include "Client.h"
-#include <vector>
 #include <fstream>
+#include <utility>
 
-const int Client::bufferSize = 512;
+const int Client::bufferSize = 128;
 
 
 void Client::connectToServer(const int port) {
@@ -23,7 +22,7 @@ void Client::connectToServer(const int port) {
         perror("Error creating socket");
         exit(1);
     }
-    struct sockaddr_in sin;
+    struct sockaddr_in sin{};
     memset(&sin, 0, sizeof(sin));
     sin.sin_family = AF_INET;
     sin.sin_addr.s_addr = inet_addr(ip_address);
@@ -35,25 +34,46 @@ void Client::connectToServer(const int port) {
     this->connected = true;
 }
 
-void Client::sendFile(std::string pathToUnclassified) {
+//void Client::sendFile(std::string pathToUnclassified) {
+//    std::string unclassified = Client::getDataFromFile(pathToUnclassified);
+//
+//    char buffer[Client::bufferSize];
+//    if (unclassified.size() >= Client::bufferSize) {
+//        std::cout << "Unclassified file is too big." << std::endl;
+//    }
+//
+//    strcpy(buffer, unclassified.c_str());
+//    int sent_bytes = ::send(socket, buffer, sizeof(buffer), 0);
+//
+//    if (sent_bytes < 0) {
+//        std::cout << "error in sending bytes" << std::endl;
+//    }
+//}
+void Client::sendFile(const std::string &pathToUnclassified) const {
     std::string unclassified = Client::getDataFromFile(pathToUnclassified);
-
+    int index = 0;
     char buffer[Client::bufferSize];
-    if (unclassified.size() >= Client::bufferSize) {
-        std::cout << "Unclassified file is too big." << std::endl;
-    }
 
-    strcpy(buffer, unclassified.c_str());
-    int sent_bytes = ::send(socket, buffer, sizeof(buffer), 0);
+    while (index + Client::bufferSize - 3 <= unclassified.size()) { //send in pieces of 128 bytes.
+        strcpy(buffer, ("<" + unclassified.substr(index, Client::bufferSize - 2) + ">").c_str());
+        index += Client::bufferSize - 2;
+        int sent_bytes = (int) ::send(socket, buffer, sizeof(buffer), 0);
+        if (sent_bytes < 0) {
+            std::cout << "error in sending bytes" << std::endl;
+        }
+    }
+    //rest of message:
+    strcpy(buffer, ("<" + unclassified.substr(index, unclassified.size()) + ">$").c_str());
+    int sent_bytes = (int) ::send(socket, buffer, sizeof(buffer), 0);
 
     if (sent_bytes < 0) {
         std::cout << "error in sending bytes" << std::endl;
     }
 }
 
-std::string Client::receive() {
+std::string Client::receive() const {
     char buffer[Client::bufferSize];
-    int read_bytes = recv(socket, buffer, sizeof(buffer), 0);
+    int read_bytes = (int) recv(socket, buffer, sizeof(buffer), 0);
     if (read_bytes == 0) {
         std::cout << "Connection was closed on server" << std::endl;
         close(socket);
@@ -73,7 +93,7 @@ void Client::disconnect() {
     this->connected = false;
 }
 
-std::string Client::getDataFromFile(std::string pathToUnclassified) {
+std::string Client::getDataFromFile(const std::string &pathToUnclassified) {
     std::string data, line;
 
     std::ifstream input;
@@ -95,7 +115,7 @@ std::string Client::getDataFromFile(std::string pathToUnclassified) {
     return data;
 }
 
-void Client::copyToFile(std::string pathToOutput, std::string &classified) {
+void Client::copyToFile(const std::string &pathToOutput, std::string &classified) {
     std::ofstream output;
     output.open(pathToOutput);
     if (output.fail()) {
