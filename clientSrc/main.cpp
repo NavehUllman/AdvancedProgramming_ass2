@@ -4,6 +4,7 @@
  */
 int main(int argc, char** argv){
     int port = std::stoi(argv[1]);
+    std::cout << "------------Client-------------\n";
     Client client;
     client.connectToServer(port);
 
@@ -19,9 +20,14 @@ int main(int argc, char** argv){
         if(classified == "<server_closed>") {std::cout << "Server closed, Abort.\n"; break;}
         //copy to file:
         std::cout << "#Copying classified points to " << pathToOutput << std::endl;
-        Client::copyToFile(pathToOutput, classified);
+        if(!Client::copyToFile(pathToOutput, classified)) {
+            std::cout << "Error in copying to file: " << pathToOutput << "." << std::endl;
+            break;
+        }
+        std::cout << std::endl;
     }
     std::cout << "#Disconnects from server..." << std::endl;
     client.disconnect();
+    std::cout << "-------------------------------" << std::endl;
 }
 

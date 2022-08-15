@@ -25,8 +25,9 @@ public:
      * Copies a string to a file.
      * @param pathToOutput the path to the file.
      * @param classified the string.
+     * @return true if it was successful, false otherwise.
      */
-    static void copyToFile(const std::string& pathToOutput, std::string& classified);
+    static bool copyToFile(const std::string& pathToOutput, std::string& classified);
     /**
      * Disconnects from the server.
      */

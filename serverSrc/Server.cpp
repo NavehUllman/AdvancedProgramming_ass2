@@ -100,7 +100,7 @@ std::string defrag(std::string &raw) {
 
 std::string Server::receive(int clientSock) {
     std::string rawMessage;
-    char buffer[Server::bufferSize] = {0};
+    char buffer[Server::bufferSize+1] = {0};
 
     while (rawMessage.find('$') == std::string::npos) {
         int read_bytes = (int) ::recv(clientSock, buffer, sizeof(buffer), 0); //receive data from client.
@@ -109,7 +109,7 @@ std::string Server::receive(int clientSock) {
         else if (read_bytes < 0) { std::cout << "Error reading bytes." << std::endl;
             return "<client_closed>";
         }
-
+        buffer[Server::bufferSize] = '\0';
         rawMessage.append(buffer);
     }
     return defrag(rawMessage);

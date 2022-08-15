@@ -3,10 +3,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <unistd.h>
-#include <string>
 #include "Client.h"
 #include <fstream>
-#include <utility>
 
 const int Client::bufferSize = 128;
 
@@ -37,12 +35,13 @@ void Client::connectToServer(const int port) {
 bool Client::sendFile(const std::string &pathToUnclassified) const {
     std::string unclassified = Client::getDataFromFile(pathToUnclassified);
     int index = 0;
-    char buffer[Client::bufferSize];
+    char buffer[Client::bufferSize] = {0};
 
     while (index + Client::bufferSize - 3 <= unclassified.size()) { //send in pieces of 128 bytes.
         strcpy(buffer, ("<" + unclassified.substr(index, Client::bufferSize - 2) + ">").c_str());
         index += Client::bufferSize - 2;
         int sent_bytes = (int) ::send(socket, buffer, sizeof(buffer), 0);
+
         if (sent_bytes < 0) {
             std::cout << "error in sending bytes" << std::endl;
             return false;
@@ -73,7 +72,7 @@ std::string defrag(std::string &raw) {
 
 std::string Client::receive() const {
     std::string rawMessage;
-    char buffer[Client::bufferSize] = {0};
+    char buffer[Client::bufferSize+1] = {0};
     while (rawMessage.find('$') == std::string::npos) {
         int read_bytes = (int) ::recv(this->socket, buffer, sizeof(buffer), 0); //receive data from client.
         if (read_bytes == 0) {
@@ -82,6 +81,7 @@ std::string Client::receive() const {
             std::cout << "Error reading bytes." << std::endl;
             return "<server_closed>";
         }
+        buffer[Client::bufferSize] = '\0';
         rawMessage.append(buffer);
     }
     return std::move(defrag(rawMessage));
@@ -114,14 +114,15 @@ std::string Client::getDataFromFile(const std::string &pathToUnclassified) {
     return data;
 }
 
-void Client::copyToFile(const std::string &pathToOutput, std::string &classified) {
+bool Client::copyToFile(const std::string &pathToOutput, std::string &classified) {
     std::ofstream output;
     output.open(pathToOutput);
     if (output.fail()) {
         std::cout << "Could not open " << pathToOutput << std::endl;
         output.close();
-        throw std::exception();
+        return false;
     }
     output << classified;
     output.close();
+    return true;
 }
