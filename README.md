@@ -4,7 +4,7 @@ At the previous assignment, we were asked to implement the KNN-Algorithm, which 
 Now, we would like to extend that idea and divide the tasks of the algorithm through *Server* and *Client* mechanism. The idea is intuitive, the server will own a *Database* file which holds classified objects, so it will have the ability to classify unclassified objects.
 The client, in contrast,  will connect to the server in order to use its service: it will send the server a list of unclassified objects, and the server will classify those objects and send them back.
 ### Our Implementation
-Firstly, it should be noted that the client and the server are two separate programs. Therefore, each of them
+First, it should be noted that the client and the server are two separate programs. Therefore, each of them
 requires a different compiling and running command. To avoid confusion, we separated their code files into two directories, **clientSrc** and **serverSrc**.
 
 * **The Server (serverSrc)**
@@ -12,7 +12,7 @@ requires a different compiling and running command. To avoid confusion, we separ
     As we said, the server will hold the role of classifying objects, so it must access the KNN algorithm implementation. Therefore, we added a directory under **serverSrc**, called **KNN**, with the implementation from the previous assignment.
 The *Database* file is *KNN/Database/classified.csv* and can be replaced. 
 In order to communicate with our clients, we created a class called *Server* which is responsible to *open sockets*, *connect*, *send*, and *receive* messages from clients.
-The clients sends the unclassified objects to a *Server* instance.
+The clients send the unclassified objects to a *Server* instance.
 
 
 * **The Client (clientSrc)**
@@ -35,7 +35,7 @@ handles a single client's requests. In the future, each thread will handle diffe
 #
 ### Running Instructions
 1. Download the project on your local device.
-2. You are given a default input file for the client (**clientSrc/Input/unclassified.csv**), and default database for the server (**serverSrc/KNN/Database/classified.csv**). If you would like to change them, you can simply replace those files. The **classified.csv** file cannot be renamed.
+2. You are given a default input file for the client (**clientSrc/Input/unclassified.csv**), and a default database for the server (**serverSrc/KNN/Database/classified.csv**). If you would like to change them, you can simply replace those files. The **classified.csv** file cannot be renamed.
 3. Open **Terminal**.
 4. Navigate to **serverSrc** using the command `cd path/to/your/project` and then `cd serverSrc`.
 5. Run the compiling command `g++ *.cpp KNN/*.cpp KNN/DistanceCalcs/*.cpp KNN/Flowers/*.cpp -std=c++11`.
@@ -44,7 +44,7 @@ handles a single client's requests. In the future, each thread will handle diffe
 7. Open a new **Terminal** window (and do not close the previous Terminal window as the server must remain open).
 8. Navigate to **clientSrc** using the command `cd path/to/your/project` and then `cd clientSrc`.
 9. Run the compiling command `g++ *.cpp -std=c++11`.
-10. A file named *a.out* should appear in the folder. Run the command `./a.out [port] [path_to_unclassified] [path_to_output_file]` to run the program. Where `[port]` is the port number given in the server running command. `[path_to_classified]` is the path to the input file (it must be located anywhere in the **clientSrc** folder. For convenience, there is a dedicated folder for this called *Input*). `[path_to_output_file]` is the path to where you want to save the results (it also must be located in **clientSrc**, recommended, in the *Output* folder). You can choose to classify any amount of files, for example, running: `./a.out 5555 Input/classified1.csv Output/result1.csv Input/classified2.csv Output/result2.csv` will connect to the server on port number `5555`, classify `classified1.csv`, `classified1.csv`, and save the results on `result1.csv`, `result2.csv`
+10. A file named *a.out* should appear in the folder. Run the command `./a.out [port] [path_to_unclassified] [path_to_output_file]` to run the program. Where `[port]` is the port number given in the server running command. `[path_to_classified]` is the path to the input file (it must be located anywhere in the **clientSrc** folder. For convenience, there is a dedicated folder for this called *Input*). `[path_to_output_file]` is the path to where you want to save the results (it also must be located in **clientSrc**, recommended, in the *Output* folder). You can choose to classify any amount of files, for example, running: `./a.out 5555 Input/unclassified1.csv Output/result1.csv Input/unclassified2.csv Output/result2.csv` will connect to the server on port number `5555`, classify `unclassified1.csv`, `unclassified2.csv`, and save the results on `result1.csv`, `result2.csv`
 respectively.
 12. The result files given in the client running command will be overwritten or created.
 
