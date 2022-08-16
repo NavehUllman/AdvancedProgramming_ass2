@@ -1,6 +1,10 @@
 #include "Server.h"
 #include "KNN/KNNFileClassifier.hpp"
 #include "KNN/DistanceCalcs/EuclideanDistance.hpp"
+#include <cstring>
+#include <algorithm>
+#include <string>
+
 
 const int Server::bufferSize = 128;
 
@@ -117,24 +121,26 @@ std::string Server::receive(int clientSock) {
 
 bool Server::send(int clientSock, std::string &classified) {
     int index = 0;
-    char buffer[Server::bufferSize];
+    std::string curMessage; char buffer[Server::bufferSize];
 
-    while (index + Server::bufferSize - 3 <= classified.size()) { //send in pieces of 128 bytes.
-        strcpy(buffer, ("<" + classified.substr(index, Server::bufferSize - 2) + ">").c_str());
-        index += Server::bufferSize - 2;
+    while (index + Server::bufferSize - 4 <= classified.size()) { //send in pieces of 128 bytes.
+
+        curMessage = "<" + classified.substr(index, Server::bufferSize - 3) + ">";
+        curMessage.copy(buffer, sizeof(buffer)); buffer[sizeof(buffer)-1] = '\0'; //copy current message to buffer.
+
+        index += Server::bufferSize - 3;
         int sent_bytes = (int) ::send(clientSock, buffer, sizeof(buffer), 0);
 
-        if (sent_bytes < 0) { std::cout << "error in sending bytes" << std::endl;
-            return false;
-        }
+        if (sent_bytes < 0) { std::cout << "error in sending bytes" << std::endl; return false; }
     }
+
     //rest of message (will be smaller than 128 bytes):
-    strcpy(buffer, ("<" + classified.substr(index, classified.size()) + ">$").c_str());
+    curMessage = "<" + classified.substr(index, classified.size()) + ">$";
+    curMessage.copy(buffer, sizeof(buffer)); buffer[curMessage.size()] = '\0';
+
     int sent_bytes = (int) ::send(clientSock, buffer, sizeof(buffer), 0);
 
-    if (sent_bytes < 0) { std::cout << "error in sending bytes" << std::endl;
-        return false;
-    }
+    if (sent_bytes < 0) { std::cout << "error in sending bytes" << std::endl; return false; }
 
     return true;
 }

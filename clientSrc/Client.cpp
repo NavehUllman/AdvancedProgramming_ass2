@@ -5,6 +5,9 @@
 #include <unistd.h>
 #include "Client.h"
 #include <fstream>
+#include <cstring>
+#include <string>
+#include <algorithm>
 
 const int Client::bufferSize = 128;
 
@@ -33,28 +36,28 @@ void Client::connectToServer(const int port) {
 }
 
 bool Client::sendFile(const std::string &pathToUnclassified) const {
-    std::string unclassified = Client::getDataFromFile(pathToUnclassified);
+    std::string unclassified = Client::getDataFromFile(pathToUnclassified), curMessage;
     int index = 0;
     char buffer[Client::bufferSize] = {0};
 
-    while (index + Client::bufferSize - 3 <= unclassified.size()) { //send in pieces of 128 bytes.
-        strcpy(buffer, ("<" + unclassified.substr(index, Client::bufferSize - 2) + ">").c_str());
-        index += Client::bufferSize - 2;
+    while (index + Client::bufferSize - 4 <= unclassified.size()) { //send in pieces of 128 bytes.
+
+        curMessage = "<" + unclassified.substr(index, Client::bufferSize -3) + ">";
+        curMessage.copy(buffer, sizeof(buffer)); buffer[sizeof(buffer)-1] = '\0'; //copying current message to buffer.
+
+        index += Client::bufferSize - 3;
         int sent_bytes = (int) ::send(socket, buffer, sizeof(buffer), 0);
 
-        if (sent_bytes < 0) {
-            std::cout << "error in sending bytes" << std::endl;
-            return false;
-        }
+        if (sent_bytes < 0) { std::cout << "error in sending bytes" << std::endl; return false;}
     }
+
     //rest of message (will be smaller than 128 bytes):
-    strcpy(buffer, ("<" + unclassified.substr(index, unclassified.size()) + ">$").c_str());
+    curMessage = "<" + unclassified.substr(index, unclassified.size()) + ">$";
+    curMessage.copy(buffer, sizeof(buffer)); buffer[curMessage.size()] = '\0';
+
     int sent_bytes = (int) ::send(socket, buffer, sizeof(buffer), 0);
 
-    if (sent_bytes < 0) {
-        std::cout << "error in sending bytes" << std::endl;
-        return false;
-    }
+    if (sent_bytes < 0) { std::cout << "error in sending bytes" << std::endl; return false;}
     return true;
 }
 /**
@@ -122,7 +125,7 @@ bool Client::copyToFile(const std::string &pathToOutput, std::string &classified
         output.close();
         return false;
     }
-    output << classified;
+    output << classified << std::endl;
     output.close();
     return true;
 }
