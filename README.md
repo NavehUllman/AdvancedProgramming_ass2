@@ -28,6 +28,7 @@ We were given the chance to choose constant parameters such as *Port number* and
 
 - Buffer size: `128 bytes`. We were given an instruction not to transfer information that exceeds the size of the input file, so we decided to send the data in 128 byte chunks. Every chunk is seperated with `<,>`, and the last chunk is marked with `$`.
 - Port number: Since we don't know which port number is available, we decided to pass this parameter as an argument in the running command ([Jump to Running Instructions](#running-instructions)).
+- `k = 5` (For the KNN algorithm).
 
 #
 We did not use *Threads*, so a server cannot handle two clients at once. But still, we wrote our program as flexible as possible, so that we can add the functionality of threads in the future without the need for dramatic changes in the code. For example, we wrote a method `Server::communicate(int clientSocket)` that
